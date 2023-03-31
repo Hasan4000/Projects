@@ -5,7 +5,7 @@ from operator import add, sub
 
 
 ctk.set_appearance_mode("System")
-ctk.set_default_color_theme("blue")
+ctk.set_default_color_theme("green")
 
 class gui(ctk.CTk):
     def __init__(self, *args, **kwargs):
