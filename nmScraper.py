@@ -56,7 +56,7 @@ if __name__=="__main__":
         url = inputURL(prompt="Enter the chapter's link: ")
         ch_count = int(input("How many chapters do you wnat to download: "))
         
-        path = r"C:\\Users\\dell\\Pictures\\Nanoa\\" # the defult path for my device
+        path = r"C:\\Users\\dell\\Pictures\\Nano\\" # the defult path for my device
         if os.path.exists(path) == False: # making sure the dowload path exist in case the program was used on another device
             while True:
                 path = inputFilepath(prompt="\nWhere do you want the chapter(s) to be downloaded at (PATH):\n")
