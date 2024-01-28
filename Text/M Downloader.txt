@@ -1,0 +1,143 @@
+Mnagas/Manhwas Info:
+
+One Punch Man:
+
+ - link: https://ww9.onepunchmanmangas.com/ (main page)
+	 -> <div class="ms-homepage-container"> -> <ul>
+
+ - title: <title> One Punch Man Chapter [ch.] - ...
+
+ - imgs div: <div class="entry-content"> -> the imgs are in <p> tags
+
+ - next chapter: <div class="wp-next-post-navi-next"> -> <a>
+
+-------------------------------------------------------------------------
+Jujutsu Kaisen:
+
+ - link: https://www.jujustukaisen.com/ (main page)
+       -> <div id="Chapters_List"> -> <ul>
+
+ - title: <title> Jujustu Kaisen, chapter [ch.] - ...
+
+ - imgs div: <div class="entry-content">
+ 
+ - next chapter: <div class="nav-next"> -> <a>
+
+-------------------------------------------------------------------------
+Solo Leveling:
+ 
+ - link: https://leveling-solo.org/ (main page)
+         -> <ul class="su-posts su-posts-list-loop ">
+
+ - title: <title> solo leveling Chapter [ch.] - ...
+
+ - imgs div: <div class="entry-content">
+ 
+ - next chapter: <div class="col-md-6 next-post">
+
+-------------------------------------------------------------------------
+Nano Machine: 
+
+ - link: https://nanomachinenow.com/ (main page)
+         -> <div id="Chapters_List"> -> <ul> -> <ul>
+ 
+ - title: <title> Nano Machine Chapter [ch.] – ...
+
+ - imgs div: <div class="entry-content">
+
+ - next chapter: <div class="nav-next"> -> <a>
+
+-------------------------------------------------------------------------
+Omnicient Reader Viewpoint:
+
+ - link: https://readomniscient.com/
+	 -> <div id="Chapter_List"> -> <ul>
+ 
+ - title: <title> Read Omniscient Reader Manga Online In High quality
+
+ - imgs div: <div class="entry-content">
+
+ - next chapter: <div class="nav-next">
+
+-------------------------------------------------------------------------
+My Hero Academia:
+
+ - link: https://w1.themyheroacademia.com/
+	 -> <div class="ms-homepage-container"> -> <ul>
+ 
+ - title: <title> My Hero Academia Chapter [ch.] - ...
+
+ - imgs div: <div class="entry-content">
+
+ - next chapter: <div class="wp-next-post-navi-next">
+ 
+-------------------------------------------------------------------------
+Legened Of The Northern Blade:
+
+ - link: https://legend-of-the-northern-blade.com/ 
+	 -> <div id="Chapters_List"> -> <ul> -> <ul>
+
+ - title: <title> Legend of The Northern Blade, Chapter [ch.] - ...
+
+ - imgs div: <div class="entry-content"> -> <p>
+
+ - next chapter: <div class="nav-next">
+
+-------------------------------------------------------------------------
+Vinland Saga:
+
+ - link: 
+
+ - title: 
+
+ - imgs div: 
+
+ - next chapter: 
+
+-------------------------------------------------------------------------
+ :
+
+ - link: 
+
+ - title: 
+
+ - imgs div: 
+
+ - next chapter: 
+
+-------------------------------------------------------------------------
+-------------------------------------------------------------------------
+TO DO:
+
+ - fix how the imgsDownload func search for the wanted chapter's <li> tag (fixed)
+	
+ - there is a problem with getting any nano machine chapter's <li> tag (it only sees ch.1 and ch.166) and when removing the 're.compile()' from the find_all method it always return ch.188 <li> tag (the last chapter) (fixed)
+   
+ - make a func that returns the last chapter's number to display it to the user (done)
+
+ - make the pdf convert func take the title paramater from the user's input not the imgsDownload func (done)
+
+ - make the defult downloading path the Downloads folder if the defult paths didn't exist on the used device (done)
+
+ - display how many chapters are avaliable to download (done)
+ 
+ - make sure that the user enters an avaliable chapter (done)
+
+ - make sure that when asking the user how many chapters he wants to download he doesn't give a number more than the difference beteween the starting chapter and the last chapter (done)
+
+ - add some cool effects in the user interface (done)
+
+ 
+ - deal with when the chapter isn't available yet but it has a webpage with no pages (sometimes only one image saying coming soon) 
+
+ - make the imgsDownlaoder func return an error message if an exception happend and give each exception a readable message to display it to the user 
+
+ - add the option to download chapters from ch. num to ch. num (make it download all the avaliable chapters if a dot was given) (dropped)
+
+ - make sure that Nano machine chapters work okay on tablets because of the first image the whole document is scaled wierdly
+
+
+
+
+
+

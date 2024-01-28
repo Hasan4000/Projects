@@ -1,0 +1,23 @@
+Youtube downloader: (Version 1.0)
+
+- take a url 
+- ask: audio or video 
+- show all the avaliable resolutions and their size as menu for the user to choose from 
+- take a downloading folder path (defult: User\dell\Downloads) [droped]
+- ask the user to give a folder path to where they want to download the file in only if the program
+  couldn't find the defult "Downloads" folder 
+- make sure that there isn't any files that has the same name as the downloaded file and if so
+  make the user choose weather to replace the old video with the new one or to rename the downloaded file
+- if there wasn't any files with the same name display the file's title and ask the user weather he wants 
+  to rename the file or keep the original name 
+- start the downloading process: (make a progress bar to display the downloding progress)
+- move the video to the wanted location [droped]
+- show a message after the downloading is finished 
+
+------------------------------------------------------------------------------------------------------------
+Youtube downloader: (Version 2.0)
+
+- add the option to download playlists 
+- the user will choose one type (video/audio) and one resolution for all the videos in the playlist [?]
+- make a folder for the downloaded playlist's videos/audios
+- add a prefix for the each video/audio file that were downloaded to make them numbered

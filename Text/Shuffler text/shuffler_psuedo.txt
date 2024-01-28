@@ -1,0 +1,73 @@
+Pennina shuffler V1:
+-take the path of the used file as an input 
+-open the file 
+-looping through each line 
+-making a dictionary that contains the word and it's translation
+-show words (after being shuffled) from the dictionary for the user to translate 
+-show the right answer
+-ask him if his answer was right or wrong
+-show the score at the end 
+(done)
+---------------------------------------------------------------------------------------------------------
+
+Pennina shuffler V2:
+- add an option for pasting the words instead of taking a text file path
+- make that there are 3 options:
+1: show the 1st word and the user guess the rest 
+2: show the translation and the user guess the word
+3: show the in brackets word and the user guess the rest
+- add more greetings and reactions
+- add the option to count the answer as a 'No' if the question wasn't given a right answer 3 times 
+- make the program ignore the empty lines of the lines that the program can't extract words from 
+  and tell the user the number and contents of the ignored line and 
+- add the option of redoing the quiz again 
+- add the option of choosing the number of words to use out of all the words
+- add more goodbyes
+- fix the bugs
+(done)
+---------------------------------------------------------------------------------------------------------
+
+Input example:
+
+ご飯　(ごはん)　food 
+卵　(たまご) egg 
+寿司　(すし) sushi
+じゃが芋　(じゃがいも)　potato
+玉ねぎ　onion
+人参　(にんじん)　carrots 
+茄子　 egg plant 
+塩　(しお) salt 
+砂糖　(さとう)　sugar 
+薬　 medicine 
+箸　(はし) chopsticks 
+家族　（かぞく) family 
+
+---------------------
+
+妈妈 (ma1 ma ) mom 
+爸爸 (ba4 ba ) dad 
+父母 (fu4 mu3 ) parents 
+哥哥 ( ge1 ge ) older brother
+弟弟 (di4 di ) younger brother 
+姐姐 ( jie3 jie ) older sister 
+妹妹 (mei4 mei4 ) younger sister 
+妻子 (qi1 zi ) wife 
+丈夫 (zhang4 fu ) husband 
+孩子 (hai2 zi ) child / children 
+儿子 (er2 zi ) son 
+女儿 (nu3 er ) daughter 
+朋友 (peng2 you3 ) friend 
+女朋友 ( nu3 peng2 you3 ) girlfriend 
+男朋友 ( nan2 peng2 you3 ) boyfriend
+
+---------------------------------------------------------------------------------------------------------
+
+TODO in the upcoming V3:
+- use regular expresions to deal whith the file 
+- make a high score system
+- show the mistakes and add the option to redo the mistakes 
+- collect the words that the user wasn't able to answer to make a new quiz with them when the user ask for it
+  and add a counter that shows the number of words that has been collected
+
+
+

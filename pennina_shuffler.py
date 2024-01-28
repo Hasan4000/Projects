@@ -1,11 +1,17 @@
 import pyinputplus as pyip
 from pyperclip import paste
+from textblob import TextBlob
 from random import shuffle, choice
 from time import sleep
 from sys import exit
 
+# make the program detect words based on their language not their order:
+# text = "это компьютерный портал для гиков"
+# lang = TextBlob(text).detect_language() # -> ru  (Russian)
+
 def pennina_shuffler():
     greetins = ["\nWelcom back lil Penny ＼(ﾟｰﾟ＼)", "\nHello there you lil (・∀・)ノ", "\nAhh we meet again Pennina ヾ(⌐■_■)ノ", "\nOi!! HOW R YA MATE (ˉ▽￣～)", "\nGreetings lil Penny \(ﾟヮﾟ)"]
+    goodbyes = ["See you later mate 〜(￣▽￣〜)", "Good Bye lil (oﾟvﾟ)ノ", "Until we meet again pennina ( ͡• ͜ʖ ͡• )", "ヾ(￣▽￣) Bye~Bye~"]
     shuffle(greetins)
     print(choice(greetins))
     sleep(1)
@@ -13,7 +19,7 @@ def pennina_shuffler():
     try:    
         lines = "".join([" " if i == "\u3000" else "(" if i == "（" else ")" if i == "）" else i for i in list(paste())]).split("\n")[:-1]
     except:
-        print("\nAn error has occured in pasting (ㆆ_ㆆ), try again after")
+        print("\nAn error has occured while pasting (ㆆ_ㆆ), try again and make sure to copy the correct text")
         input()
         exit()
 
@@ -51,9 +57,9 @@ def pennina_shuffler():
     # making the user choose what to be shown for him to translate
     option = pyip.inputInt(prompt="\nChoose the wanted option (1) for first word, (2) for the translation, (3) for the in bracket word(s) : ", min=1, max=3,)
     option_dict = {1: word_dict, 2: trans_dict, 3: in_brackets_dict}
-    operation_dict = option_dict[option]
+    chosen_dict = option_dict[option]
 
-    shuffled_words = list(operation_dict.keys())
+    shuffled_words = list(chosen_dict.keys())
     shuffle(shuffled_words)
 
     if len(shuffled_words) == 0:
@@ -68,41 +74,70 @@ def pennina_shuffler():
         words_num = len(shuffled_words)
 
     # the quiz:
-    answers= []
+    right_answers_count = 0
+    wrong_answers = []
     for index, word in enumerate(shuffled_words[:words_num], 1):
         print(f"\n{index}- Translate: {word}")
         input()
-        print(f"The right answer is:  {operation_dict[word]}\n")
+        print(f"The right answer is:  {chosen_dict[word]}\n")
         sleep(1)
-        answers.append(pyip.inputYesNo(prompt="did you get it right? (Yes or No ): ", default="no", blank=True, limit=3))
-        
+        answer = pyip.inputYesNo(prompt="did you get it right? (y / n): ", default="no", blank=True, limit=3)
+        if answer == "no": 
+            wrong_answers.append((index-1, word))
+            # we add a tuple that contains the word and it's index to the wrong_answers list to give the user the option to try again whith only those words that he got wrong
+        else:
+            right_answers_count += 1
+
     # showing the score:
     sleep(2)
-    score = answers.count('yes') + answers.count('') # the blank value also considered as a "yes"
-    print(f"\nYour score: {score}\\{len(answers)}")
+    print(f"\nYour score: {right_answers_count}\\{words_num}") # blank values also count as a "yes"
     sleep(1)
 
     # reaction:
-    if score == len(answers): # full mark
+    if right_answers_count == words_num: # full mark
         print("\nWOW you aced it \^o^/")
-    elif (score / len(answers)) > 0.5: # above half
+    elif (right_answers_count / words_num) > 0.5: # above half
         print("\n\nGood job you lil ( ͡° ͜ʖ ͡°)") 
-    elif score == 0: 
-        print("\nOI!! WHAT THE HECK IS THAT SCORE, YOU BETTER DO YOUR BEST NEXT TIME OR I SWEAR I'LL SLAP YOU ON THE FOREHEAD!\n(ｏ ‵-′)ノ”(ノ﹏<。)")
+    elif right_answers_count == 0: 
+        print("\nOI!! WHAT THE HECK IS THAT SCORE, YOU BETTER DO YOUR BEST NEXT TIME OR I SWEAR I'LL SLAP YOU ON YOUR FOREHEAD!\n(ｏ ‵-′)ノ”(ノ﹏<。)")
         input()
         exit()
     else: # below half but not zero
         print("\nNot the best but alright, make sure to do better next time (▀̿Ĺ̯▀̿ ̿)")
 
     sleep(1)
-    restart = pyip.inputYesNo(prompt="\n\nDo you want to redo the quiz? (yes or no): ")
-    if restart == "yes":
-        print(end="\n\n\n")
-        pennina_shuffler() # calling the fuction again to restart the program
+    
+
+    if len(wrong_answers) > 0:
+        # displaing the words that the user didn't translate right
+        print("\nThe words that you didn't translate correctly: ")
+        for i in wrong_answers:
+            index, word = i
+            print(f"{index}- {word}: {chosen_dict[word]}")
+
+        # ask the user if he wants to redo only the words that he got wrong
+        print(f"\nYou had {len(wrong_answers)} mistake(s) ╯︿╰")
+        redo_mistakes = pyip.inputYesNo(prompt="\nDo you want to make a quiz with the words that you could't answer correctly? (y / n): ", blank=True)
+        if redo_mistakes == "yes":
+            for i in wrong_answers:
+                if type(i) == "tuple":
+                    indx, word = i
+                    print(f"\n{index}- Translate: {word}")
+                    input()
+                    print(f"The right answer is:  {chosen_dict[word]}\n")
+                    sleep(1)
+
+            print(f"\n\n{choice(goodbyes)}\n")
+            input()  
     else:
-        goodbyes = ["See you later mate 〜(￣▽￣〜)", "Good Bye lil (oﾟvﾟ)ノ", "Until we meet again pennina ( ͡• ͜ʖ ͡• )", "ヾ(￣▽￣) Bye~Bye~"]
-        print(f"\n\n{choice(goodbyes)}")
-        input() # i put that here for the program to not exit automatically after it finishes
+        restart = pyip.inputYesNo(prompt="\nDo you want to redo the whole quiz? (y / n)", blank=True)
+        if restart == "yes":
+            print(end="\n\n")
+            print("\nHere we go again, hope you do better this time :)\n")
+            pennina_shuffler() # calling the fuction again to restart the program
+        else:
+            print(f"\n\n{choice(goodbyes)}\n")
+            input() # i put that here for the program to not exit automatically after it finishes
 
 
 
@@ -144,9 +179,23 @@ Input example:
 男朋友 ( nan2 peng2 you3 ) boyfriend
 """
 
+"""
+Chair（いす）椅子
+Window　窓（まど） 
+Car 自動車（じどうしゃ）
+Train 電車（でんしゃ）
+Phone 電話（でんわ）
+Photo 写真（しゃしん）
+Building 建物（たてもの）
+Store / shop 店（みせ）
+Garden 庭（にわ） 
+Money お金（おかね）
+World 世界（せかい）
+"""
+
 
 """
-Removed fetuer: (taking a text file as an input instead of pasting)
+Removed fetuer: taking a text file as an input instead of pasted text
 
 txt_choice = pyip.inputInt(prompt="\nChoose the input method ( (1) for Pasting, (2) for Text file ): ", min=1, max=2)
 

@@ -1,0 +1,44 @@
+route: 
+
+ 0. body
+
+ 1. div, data-elementor-type: single-post
+
+ 2. div, class="elementor-section-wrap" 
+
+ 3. section, data-id "730a01ea"
+
+ 4. div, class="elementor-container" -> ., class="elementor-row"
+
+ 5. div, data-id: "32a2d77" 
+ 
+ 6. div, class="elementor-column-wrap elementor-element-populated" -> ., class="elementor-widget-wrap" -> ., class="elementor-element" -> ., class="elementor-widget-container" -> ., data-elementor-type="wp-post" -> ., class="elementor-inner" -> ., class="elementor-section-wrap"
+
+ # after that there are sections that contain the pages and ads (one and one) 
+  
+ #for each of the sections in the div:
+ 7. section, class="elementor-section -> div, class="elementor-container -> ., class="elementor-row" -> ., class="elementor-column -> ., class="elementor-column-wrap -> ., class="elementor-widget-wrap" -> ., class="elementor-element -> ., class="elementor-widget-container" -> center 
+
+8. if it's an ad's section: <strong>Advertisement</strong> (pass)
+   
+  ,if it's a pages group section: div, style="font-size:0;"
+
+9. you'll find "img" elements, if the element has the class:"lazy-loaded"
+then it's a page, if it has the class:"lazy-hidden" then it's a placehloder (pass) 
+
+10. take the 'src' attr value (link) to download the image
+
+11. redo step 7,8,9,10 to each section in the div and store the images in folder 
+
+(I didn't actully need any of this :| )
+
+
+
+
+link: https://w24.readnanomachine.com/nano-machine-chapter-114-v4/
+# starting from ch.158 there is no -v4 at the end of the link
+
+for the next update:
+- make it use the cwd to be compatible with other devices
+- add the option to choose where to save the file and make a defult path
+

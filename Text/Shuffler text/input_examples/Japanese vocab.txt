@@ -1,0 +1,12 @@
+ご飯　food 
+卵　(たまご) egg 
+寿司　sushi
+じゃが芋 (じゃがいも)　potato
+玉ねぎ　(たまねぎ)　onion
+人参　(にんじん)　carrots 
+茄子　(なす) egg plant 
+塩 salt 
+砂糖　(さとう)　sugar 
+薬　(くすり) medicine 
+箸　(はし) chopsticks 
+家族　（かぞく) family 

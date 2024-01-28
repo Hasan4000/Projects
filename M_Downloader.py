@@ -6,7 +6,7 @@ from natsort import natsorted
 import re
 import pyinputplus as pyip
 from time import sleep
-from pystyle import Colorate, Colors, Write
+from pystyle import Colorate, Colors, Write, Center
 import pyfiglet 
 from random import choice
 
@@ -91,7 +91,7 @@ if __name__=="__main__":
         # I'm using pystyle to make the written text colorful, that's whats in the print statments 
         
         program_logo_colors = [Colors.cyan_to_blue, Colors.blue_to_cyan, Colors.cyan_to_green, Colors.yellow_to_red, Colors.red_to_purple, Colors.yellow_to_green]
-        print(Colorate.Horizontal(choice(program_logo_colors), pyfiglet.figlet_format("M  Downlaoder"))) # the program logo (you have to add '-F --collect-all pyfiglet' argument when turning the file into an exe for this line to work because there is issues when using pyfiglet and pyinstaller together)
+        print(Colorate.Horizontal(choice(program_logo_colors), Center.XCenter(pyfiglet.figlet_format("M  Downlaoder")))) # the program logo (you have to add '-F --collect-all pyfiglet' argument when turning the file into an exe for this line to work because there is issues when using pyfiglet and pyinstaller together)
         sleep(0.5)
 
         Write.Print("\nWelcome Back (^_^)ノ", Colors.purple_to_blue, interval=0.07) # the welcome message
@@ -102,7 +102,7 @@ if __name__=="__main__":
         manga = pyip.inputMenu(prompt=":\n", choices=["One Punch Man", "Jujutsu Kaisen", "Solo Leveling", "Nano Machine", "Omnicient Reader's Viewpoint", "Legend Of The Northern Blade", "My Hero Academia", "Vinland Saga", "Chainsaw Man"], numbered=True)
 
         last_chapter, total = get_chapters_info(mangas[manga]['url'])
-        Write.Print(f"\nThere are {total} chapters available (Some might be bonus chapters), the latest chapter is chapter {last_chapter} (the latest chapter might be 'coming soon') (▀̿Ĺ̯▀̿ ̿)", Colors.purple_to_blue, interval=0.05) # for the chapters info
+        Write.Print(f"\nThere are {total} chapters available (Some might be bonus chapters), the latest chapter is chapter {last_chapter} (the latest chapter might be 'coming soon') (▀̿Ĺ̯▀̿ ̿)", Colors.purple_to_blue, interval=0.03) # for the chapters info
         sleep(0.5)
 
         Write.Print("\n\nStart Downloading from chapter", Colors.cyan_to_green, interval=0.06) 
@@ -128,7 +128,7 @@ if __name__=="__main__":
                 else:
                     print("\nPath doesn't exist, please try again")
 
-        Write.Print("\nDownload Started", Colors.cyan_to_green, interval=0.08) 
+        Write.Print("\nDownload Started\n", Colors.cyan_to_green, interval=0.08) 
         for chapter in range(start, start+ch_count):
             imgsDownload(mangas[manga], chapter, path)
 
@@ -143,7 +143,8 @@ if __name__=="__main__":
         # if input=="c": copy(url) #copying the link of the chapter that follows the last downloaded chapter 
 
     except Exception as e:
-        Write.Print(f"\nAn error has occured: {str(e)}\n\nMake sure you are conected to the internet and that the chapter that you chose is actually available if it was the latest chapter\n", Colors.white_to_red, interval=0.04) # errors messages
+        Write.Print(f"\nAn error has occured, Make sure you are conected to the internet and that the chapter that you chose is actually available if it was the latest chapter", Colors.white_to_red, interval=0.04) # errors messages
+        Write.Print(f"\n\nThe Error: {str(e)}\n", Colors.white_to_red, interval=0.04) # errors messages
         input()
 
 
