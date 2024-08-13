@@ -1,4 +1,4 @@
-Mnagas/Manhwas Info:
+Mnagas/Manhwas scraping data:
 
 One Punch Man:
 
@@ -84,17 +84,6 @@ Legened Of The Northern Blade:
  - next chapter: <div class="nav-next">
 
 -------------------------------------------------------------------------
-Vinland Saga:
-
- - link: 
-
- - title: 
-
- - imgs div: 
-
- - next chapter: 
-
--------------------------------------------------------------------------
  :
 
  - link: 
@@ -104,6 +93,7 @@ Vinland Saga:
  - imgs div: 
 
  - next chapter: 
+
 
 -------------------------------------------------------------------------
 -------------------------------------------------------------------------
@@ -134,10 +124,27 @@ TO DO:
 
  - add the option to download chapters from ch. num to ch. num (make it download all the avaliable chapters if a dot was given) (dropped)
 
- - make sure that Nano machine chapters work okay on tablets because of the first image the whole document is scaled wierdly
+ - make sure that Nano machine chapters work okay on tablets/phones because some image are scaled diffrently
 
 
+"""
+# specify paper size (A4)
+a4inpt = (img2pdf.mm_to_pt(210),img2pdf.mm_to_pt(297))
+layout_fun = img2pdf.get_layout_fun(a4inpt)
+with open("name.pdf","wb") as f:
+	f.write(img2pdf.convert('test.jpg', layout_fun=layout_fun))
+"""
 
+"""
+#if you want to resize images and keep their aspect ratios, then you should instead use the thumbnail() function to resize them. This also takes a two-integer tuple argument representing the maximum width and maximum height of the thumbnail.
+
+
+from PIL import Image
+
+image = Image.open('demo_image.jpg')
+image.thumbnail((400, 400))
+image.save('image_name.jpg')
+"""
 
 
 

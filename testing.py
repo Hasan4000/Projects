@@ -497,6 +497,7 @@
 # Write.Print('\nAll Done', Colors.blue_to_red, interval=0.08)
 # Write.Print('\nAll Done', Colors.green_to_white, interval=0.08)
 # Write.Print('\nAll Done', Colors.green_to_white, interval=0.08)
+# Write.Print('\nAll Done Hello there what are you doing boy', Colors.red_to_white, interval=0.08)
 # Write.Print('\nAll Done Hello there what are you doing boy', Colors.blue_to_red, interval=0.06)
 # Write.Print('\nAll Done Hello there what are you doing boy', Colors.rainbow, interval=0.06)
 
@@ -510,5 +511,195 @@
 # Colors.yellow_to_red,
 # Colors.red_to_purple,
 # Colors.yellow_to_green]
+
+
+# def checkChapter(ch_url):
+#     ch = requests.get(ch_url)
+#     ch_soup = BeautifulSoup(ch.text, "lxml")
+    
+#     if "nano" in ch_url: #in nm website there are extra images in the 'entry-content' div that are other manhwas covers, so i delete it's tags for it to not get mixed with the pages
+#         for i in range(len(ch_soup.find_all("div", class_='gallery'))):
+#             ch_soup.find("div", class_='gallery').decompose()
+
+#     imgs = ch_soup.find("div", class_="entry-content").find_all('img') # list of all the imgs elements
+#     if len(imgs) > 1:
+#         return "valid"
+#     else:
+#         return "empty"
+# print(checkChapter("https://nanomachinescans.com/manga/nano-machine-chapter-165/"))
+
+
+
+
+
+#-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#                                                                             id_format:
+# import easyocr # there was an error when usnig this module that took me about 2 hours to fix (it was a missing .dll file)
+
+# for suppressing the unnecessary output that appears when using easyocr (from Chat-GPT)
+# import sys
+# import os
+
+# import tkinter as tk
+# from tkinter import filedialog # the code doesn't work if you don't write this  
+
+# from PIL import Image, ImageEnhance
+# import pytesseract
+# import cv2
+# import numpy as np
+# from skimage.filters import threshold_local
+
+# # Redirect stdout and stderr
+# class SuppressOutput:
+#     def __enter__(self):
+#         self.old_stdout = sys.stdout
+#         self.old_stderr = sys.stderr
+#         sys.stdout = open(os.devnull, 'w')
+#         sys.stderr = open(os.devnull, 'w')
+        
+#     def __exit__(self, *args):
+#         sys.stdout.close()
+#         sys.stderr.close()
+#         sys.stdout = self.old_stdout
+#         sys.stderr = self.old_stderr
+
+# with SuppressOutput():
+#     # Create an OCR reader object
+#     reader = easyocr.Reader(['ar'])
+
+#     # Read text from an image
+#     result = reader.readtext(r"C:\Users\dell\Pictures\Id_face.jpg") # صورة بطاقة شخصية
+    # Print the extracted text
+    # for detection in result:
+        # print(detection[1])
+
+
+# def enhance(img_path):
+
+#     # Load the ID image
+#     image = Image.open(img_path).copy()
+
+#     # Convert to grayscale
+#     image = image.convert('L')
+
+#     # Increase contrast
+#     enhancer = ImageEnhance.Contrast(image)
+#     image = enhancer.enhance(2)
+
+    # Apply thresholding
+    # image = image.point(lambda x: 0 if x < 140 else 255, '1')
+
+    # Optionally, apply median filter to remove noise
+    # img_array = np.array(image)
+    # img_array = cv2.medianBlur(img_array, 3)
+    # image = Image.fromarray(img_array)
+    
+    # return image
+
+
+# def naming(face_path): # extracts the first name from the ID's face by using OCR
+#     with SuppressOutput():
+#         # Create an OCR reader object
+#         reader = easyocr.Reader(['ar'])
+
+#         # Read text from an image
+#         result = reader.readtext(face_path) # صورة بطاقة شخصية
+#     # return f"بطاقة {result[3][1]} {result[4][1].split()[0]}"  # returns the first two names (inconsistant)
+#     for i in result:
+#         print(i[1])
+
+# naming(r"C:\Users\dell\Pictures\Docs\CamScanner 08-10-2024 16.18_02.jpg") 
+
+
+# pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+
+# Extract text from the image
+# custom_config = r'-l ara --oem 1 --psm 4'  # You can experiment with psm 4, 7, or 11, You can try different PSMs to see what works best for you
+# text = pytesseract.image_to_string(enhance(r"C:\Users\dell\Pictures\Docs\WhatsApp Image 2024-08-11 at 20.45.48_bbe425b6.jpg"), config=custom_config)
+# print(text)
+
+
+# enhance(r"C:\Users\dell\Pictures\Docs\CamScanner 08-10-2024 16.18_02.jpg").show()
+
+# save_path = pyip.inputFilepath(prompt="Please enter the path to where you want to save the file: ")
+
+
+# def select_file(): # courtesy of chat-GPT
+#     # Create a Tkinter root window (it won't be visible)
+#     root = tk.Tk()
+#     root.withdraw()  # Hide the root window
+    
+#     # opens the explorer and allows the user to choose an image file (only images) and returns it's path
+#     file_path = filedialog.askopenfilename(title="Select an image file", filetypes=[("Image files", "*.jpg;*.jpeg;*.png")])
+
+#     if file_path:
+#         print(f"File will be saved to: {file_path}")
+#     else:
+#         print("No file was selected.")
+    
+
+#     return file_path
+
+
+# def choose_save_location():
+#     root = tk.Tk()
+#     root.withdraw()  # Hide the root window
+    
+#     save_path = filedialog.askdirectory(title="Where do want to save the file?")
+    
+#     if save_path:
+#         print(f"File will be saved to: {save_path}")
+#     else:
+#         print("No location was selected.")
+    
+#     return save_path
+
+# # Example usage:
+# save_path = choose_save_location()
+
+
+
+# another failed OCR attempt :( 
+# def preprocess_image(image_path):
+#     # Read the image
+#     image = cv2.imread(image_path)
+
+#     # Convert to grayscale
+#     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+#     # Apply a threshold to get a binary image
+#     T = threshold_local(gray, 11, offset=10, method="gaussian")
+#     binary_image = (gray > T).astype("uint8") * 255
+
+#     # Denoising
+#     denoised_image = cv2.fastNlMeansDenoising(binary_image, None, 30, 7, 21)
+
+#     # Display the final preprocessed image
+#     # cv2.imshow('Preprocessed Image', denoised_image)
+#     # cv2.waitKey(0)  # Wait until a key is pressed
+#     # cv2.destroyAllWindows()  # Close the image window
+
+#     return denoised_image
+
+# def extract_text_from_image(image_path):
+#     # Preprocess the image
+#     preprocessed_image = preprocess_image(image_path)
+
+#     # Convert the image to a format that pytesseract can read
+#     preprocessed_image = cv2.cvtColor(preprocessed_image, cv2.COLOR_BGR2RGB)
+
+#     pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+#     # Perform OCR with Arabic language
+#     extracted_text = pytesseract.image_to_string(preprocessed_image, lang='ara', config='--psm 6')
+
+#     return extracted_text
+
+# if __name__ == "__main__":
+#     image_path = r"C:\Users\dell\Pictures\id_face.jpg"
+#     text = extract_text_from_image(image_path)
+#     print(text)
+#     # preprocess_image(image_path)
+
+#-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 

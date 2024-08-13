@@ -1,0 +1,11 @@
+ID Format:
+
+- take images of the id's front and back sides as input
+
+- change the image dimensions to the suitable height and width
+
+- put each of them in the wanted position on a blank A4 page
+
+- return both the edited images in a pdf
+
+- use OCR to extract the name on the ID

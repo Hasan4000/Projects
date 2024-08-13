@@ -1,0 +1,9 @@
+Trim:
+
+- take the video's path (try to make it easy to do so)
+
+- ask the user to enter where to start trimming and where to stop
+
+- repeat until the user exit 
+
+- out the edited video in a specified folder and open it for the user

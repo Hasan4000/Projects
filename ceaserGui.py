@@ -73,5 +73,6 @@ class gui(ctk.CTk):
         copy(self.cypher())
 
 
-app = gui()
-app.mainloop()
+if __name__=="__main__":
+    app = gui()
+    app.mainloop()
